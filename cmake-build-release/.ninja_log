@@ -1,0 +1,13 @@
+# ninja log v5
+70	1796	7295172119355183	CMakeFiles/Riddle.dir/gen/RiddleParserBaseVisitor.cpp.obj	38ed0f0d41293068
+58	1801	7295172119424564	CMakeFiles/Riddle.dir/gen/RiddleParserListener.cpp.obj	72fd9966cda0f9bf
+45	1803	7295172119444703	CMakeFiles/Riddle.dir/gen/RiddleParserVisitor.cpp.obj	aafcd0244e7de884
+83	2411	7295172124295508	CMakeFiles/Riddle.dir/scr/visitor.cpp.obj	f5ad0130eb6c3121
+134	1804	7295172119464717	CMakeFiles/Riddle.dir/scr/main.cpp.obj	e6323525f922418e
+6	1811	7295172119550186	CMakeFiles/Riddle.dir/gen/RiddleLexer.cpp.obj	46a1080123203e21
+32	1800	7295172119400628	CMakeFiles/Riddle.dir/gen/RiddleParserBaseListener.cpp.obj	8ddb218ce23e6b16
+20	2650	7295172127513909	CMakeFiles/Riddle.dir/gen/RiddleParser.cpp.obj	935e7547104bae54
+1240	1454	7291109355346910	Riddle.exe	d2476cab902acfd8
+96	1798	7295172119344831	CMakeFiles/Riddle.dir/scr/Object.cpp.obj	ddc8adfe850a8689
+121	2035	7295172121469149	CMakeFiles/Riddle.dir/scr/Tools.cpp.obj	123e35f4a780bae4
+108	2075	7295172122104865	CMakeFiles/Riddle.dir/scr/ObjManager.cpp.obj	694e8a3440e518e8

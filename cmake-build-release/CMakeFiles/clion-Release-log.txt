@@ -1,0 +1,4 @@
+C:\Users\wangz\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=C:/Users/wangz/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -DCMAKE_CXX_FLAGS=-O3 -G Ninja -S C:\Users\wangz\CLionProjects\Riddle -B C:\Users\wangz\CLionProjects\Riddle\cmake-build-release
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/wangz/CLionProjects/Riddle/cmake-build-release
