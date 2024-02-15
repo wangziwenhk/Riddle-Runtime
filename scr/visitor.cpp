@@ -231,7 +231,7 @@ std::any Visitor::visitOneValDeclaration(RiddleParser::OneValDeclarationContext 
     auto type=any_cast<string>(visit(ctx->children[0]));
     auto name=any_cast<string>(visit(ctx->children[1]));
     MainManager.define_obj(name, type);
-    return {};
+    return name;
 }
 
 std::any Visitor::visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx){
@@ -239,5 +239,5 @@ std::any Visitor::visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx
     auto name=any_cast<string>(visit(ctx->children[1]));
     auto value=visit(ctx->children[3]);
     MainManager.define_obj(name, type, value);
-    return {};
+    return name;
 }

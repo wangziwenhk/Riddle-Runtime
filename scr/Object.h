@@ -19,7 +19,7 @@ private:
     std::string UUID;
     std::map<std::string, RiddleParser::FuncDefintionContext *> func;
 public:
-    std::any runFunc(const std::string &name);
+    std::any runFunc(const std::string &name, const std::vector<std::any> &parameters);
 
     void setFunc(const std::string &name, RiddleParser::FuncDefintionContext *function);
 

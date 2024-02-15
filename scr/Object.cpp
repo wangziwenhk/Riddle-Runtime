@@ -16,17 +16,24 @@ std::string &Object::typeOf(){
     return _type;
 }
 
-//fixme 不正确的方法调用,谁TM让你直接Visit啊,Visitor是解析用的不是运行用的啊SB
-std::any Object::runFunc(const std::string &name){
+std::any Object::runFunc(const std::string &name, const std::vector<std::any> &parameters){
     if(!func.count(name))throw std::logic_error("Function not defined");
     MainManager.enter_scope();
     RiddleParser::FuncDefintionContext *ctx=func[name];
-    std::string funcName=ctx->children[1]->toString();
+    //XXX 谁让你每次调用方法就新生成一个Visitor啊，放到外面去
     Visitor temp;
     auto typeName=std::any_cast<std::string>(temp.visit(ctx->children[0]));
-    //todo 生成自定义变量
-
-
+    std::string funcName=ctx->children[1]->toString();
+    //生成自定义变量
+    int cnt=0;
+    for(int i=3;i < ctx->children.size()-2;i++){
+        auto ValName=std::any_cast<std::string>(temp.visit(ctx->children[i]));
+        MainManager.set_value(ValName, parameters[cnt++]);
+    }
+    //visitFuncBody 来运行
+    std::any result=temp.visit(ctx->children[ctx->children.size()-1]);
+    MainManager.out_scope();
+    return result;
 }
 
 RiddleParser::FuncDefintionContext * Object::funcOf(const std::string &name){
