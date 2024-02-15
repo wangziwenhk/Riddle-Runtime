@@ -145,41 +145,6 @@ build Riddle.exe: CXX_EXECUTABLE_LINKER__Riddle_Release CMakeFiles/Riddle.dir/ge
   TARGET_IMPLIB = libRiddle.dll.a
   TARGET_PDB = Riddle.exe.dbg
 
-# =============================================================================
-# Object build statements for EXECUTABLE target test
-
-
-#############################################
-# Order-only phony target for test
-
-build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
-
-build CMakeFiles/test.dir/scr/test.cpp.obj: CXX_COMPILER__test_unscanned_Release C$:/Users/wangz/CLionProjects/Riddle/scr/test.cpp || cmake_object_order_depends_target_test
-  DEP_FILE = CMakeFiles\test.dir\scr\test.cpp.obj.d
-  FLAGS = -O3 -O3 -DNDEBUG -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/wangz/CLionProjects/Riddle/include -IC:/Users/wangz/CLionProjects/Riddle/gen
-  OBJECT_DIR = CMakeFiles\test.dir
-  OBJECT_FILE_DIR = CMakeFiles\test.dir\scr
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target test
-
-
-#############################################
-# Link the executable test.exe
-
-build test.exe: CXX_EXECUTABLE_LINKER__test_Release CMakeFiles/test.dir/scr/test.cpp.obj
-  FLAGS = -O3 -O3 -DNDEBUG
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  LINK_PATH = -LC:/Users/wangz/CLionProjects/Riddle/lib
-  OBJECT_DIR = CMakeFiles\test.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = test.exe
-  TARGET_IMPLIB = libtest.dll.a
-  TARGET_PDB = test.exe.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -208,8 +173,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build Riddle: phony Riddle.exe
 
-build test: phony test.exe
-
 # =============================================================================
 # Folder targets.
 
@@ -218,7 +181,7 @@ build test: phony test.exe
 #############################################
 # Folder: C:/Users/wangz/CLionProjects/Riddle/cmake-build-release
 
-build all: phony Riddle.exe test.exe
+build all: phony Riddle.exe
 
 # =============================================================================
 # Built-in targets

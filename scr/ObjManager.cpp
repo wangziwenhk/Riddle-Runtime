@@ -35,7 +35,7 @@ bool ObjManager::define_obj(const std::string & name, const std::string & type,c
     //todo:写完类型自定义初始化
     if(type == "function"){
         //函数类型初始化
-        
+
     }
 
     //manager注册该对象
@@ -45,18 +45,6 @@ bool ObjManager::define_obj(const std::string & name, const std::string & type,c
     return true;
 }
 
-bool ObjManager::define_refer(const std::string &name, const std::string &referenced){
-    if(new_define.top().count(name))throw std::logic_error("Multiple definitions");
-
-    Object temp;
-    temp.hashCode() = uuids[referenced].top();
-    temp.typeOf() = "reference";
-    temp.valueOf() = NULL;
-
-    new_define.top().insert(name);
-    uuids[name].push(temp.hashCode());
-    return true;
-}
 
 std::any ObjManager::get_value(const std::string & name){
     if(uuids[name].empty())throw std::logic_error("Object does not exist");

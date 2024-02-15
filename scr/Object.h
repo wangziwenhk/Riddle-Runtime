@@ -21,6 +21,8 @@ private:
 public:
     std::any runFunc(const std::string &name);
 
+    void setFunc(const std::string &name, RiddleParser::FuncDefintionContext *function);
+
     RiddleParser::FuncDefintionContext * funcOf(const std::string &name);
 
     std::any &valueOf();

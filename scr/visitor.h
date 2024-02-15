@@ -22,6 +22,10 @@ public:
     std::any visitAssignmentExpression(RiddleParser::AssignmentExpressionContext *ctx) override;
     std::any visitClassName(RiddleParser::ClassNameContext *ctx) override;
     std::any visitFuncDefintion(RiddleParser::FuncDefintionContext *ctx) override;
+
+    std::any visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx) override;
+
+    std::any visitOneValDeclaration(RiddleParser::OneValDeclarationContext *ctx) override;
 };
 
 #endif //RIDDLE_VISITOR_H

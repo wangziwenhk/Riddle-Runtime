@@ -226,3 +226,18 @@ std::any Visitor::visitFuncDefintion(RiddleParser::FuncDefintionContext *ctx){
     MainManager.define_obj(funcName,"function",ctx);
     return {};
 }
+
+std::any Visitor::visitOneValDeclaration(RiddleParser::OneValDeclarationContext *ctx){
+    auto type=any_cast<string>(visit(ctx->children[0]));
+    auto name=any_cast<string>(visit(ctx->children[1]));
+    MainManager.define_obj(name, type);
+    return {};
+}
+
+std::any Visitor::visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx){
+    auto type=any_cast<string>(visit(ctx->children[0]));
+    auto name=any_cast<string>(visit(ctx->children[1]));
+    auto value=visit(ctx->children[3]);
+    MainManager.define_obj(name, type, value);
+    return {};
+}

@@ -1,4 +1,3 @@
 C:/Users/wangz/CLionProjects/Riddle/cmake-build-debug/CMakeFiles/Riddle.dir
-C:/Users/wangz/CLionProjects/Riddle/cmake-build-debug/CMakeFiles/test.dir
 C:/Users/wangz/CLionProjects/Riddle/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/wangz/CLionProjects/Riddle/cmake-build-debug/CMakeFiles/rebuild_cache.dir

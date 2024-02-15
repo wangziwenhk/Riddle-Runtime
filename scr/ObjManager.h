@@ -22,8 +22,6 @@ public:
     //在当前作用域中定义一个变量
     bool define_obj(const std::string & name, const std::string & type,const std::any & value=NULL);
 
-    //在当前作用域中定义一个引用
-    bool define_refer(const std::string &name, const std::string &referenced);
 
     //获取一个对象的值
     std::any get_value(const std::string & name);
