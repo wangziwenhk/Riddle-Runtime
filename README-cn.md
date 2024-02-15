@@ -6,6 +6,9 @@
 ![Static Badge](https://img.shields.io/badge/Cmake-3.27-green)
 ![Static Badge](https://img.shields.io/badge/Antlr-4.13.1-green)
 ![Badge](https://badgen.net/github/stars/wangziwenhk/Riddle-Runtime)
+![Badge](https://badgen.net/github/forks/wangziwenhk/Riddle-Runtime)
+![Badge](https://badgen.net/github/issues/wangziwenhk/Riddle-Runtime)
+![Badge](https://badgen.net/github/license/wangziwenhk/Riddle-Runtime)
 
 一个简单好用的编程语言
 
