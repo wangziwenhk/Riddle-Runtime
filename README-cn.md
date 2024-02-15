@@ -36,6 +36,18 @@ cd ./Riddle-Runtime
 使用 Cmake 编译源代码
 
 ```bash
-Cmake --build .\cmake-build-debug --target Riddle -j 30
+cmake -B ./build -G "MinGW Makefiles"
+```
+
+进入该目录
+
+```bash
+cd ./build
+```
+
+编译文件
+
+```bash
+make
 ```
 
