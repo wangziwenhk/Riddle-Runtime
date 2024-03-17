@@ -87,6 +87,10 @@ public:
         return visitChildren(ctx);
     }
 
+    virtual std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
     virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *ctx) override{
     return visitChildren(ctx);
   }

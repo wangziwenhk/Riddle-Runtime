@@ -99,8 +99,14 @@ lessExpression
 
 //小于等于表达式
 lessEqualExpression
-    : primaryExpression
+    : greaterEqualExpression
     | <assoc = right> lessEqualExpression LessEqual lessEqualExpression
+    ;
+
+//大于等于表达式
+greaterEqualExpression
+    : primaryExpression
+    | <assoc = right> greaterEqualExpression GreaterEqual greaterEqualExpression
     ;
 
 idExpression

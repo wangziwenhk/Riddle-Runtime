@@ -55,6 +55,8 @@ public:
 
     virtual std::any visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *context) = 0;
 
+    virtual std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *context) = 0;
+
     virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
 
     virtual std::any visitTypeLiteral(RiddleParser::TypeLiteralContext *context) = 0;

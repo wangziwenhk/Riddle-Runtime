@@ -84,6 +84,10 @@ public:
 
     virtual void exitLessEqualExpression(RiddleParser::LessEqualExpressionContext * /*ctx*/) override{}
 
+    virtual void enterGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext * /*ctx*/) override{}
+
+    virtual void exitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext * /*ctx*/) override{}
+
     virtual void enterIdExpression(RiddleParser::IdExpressionContext * /*ctx*/) override{}
 
     virtual void exitIdExpression(RiddleParser::IdExpressionContext * /*ctx*/) override{}

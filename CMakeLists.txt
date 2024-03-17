@@ -20,6 +20,8 @@ set(scr_dir
         scr/Object.h
         scr/Tools.cpp
         scr/Tools.h
+        scr/toAstVisitor.cpp
+        scr/toAstVisitor.h
 )
 
 

@@ -82,6 +82,10 @@ public:
 
     virtual void exitLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx) = 0;
 
+    virtual void enterGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) = 0;
+
+    virtual void exitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) = 0;
+
     virtual void enterIdExpression(RiddleParser::IdExpressionContext *ctx) = 0;
 
     virtual void exitIdExpression(RiddleParser::IdExpressionContext *ctx) = 0;

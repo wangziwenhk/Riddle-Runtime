@@ -34,9 +34,9 @@ public:
       RuleWhile=7, RuleFuncDefine=8, RuleFuncBody=9, RuleBlock=10,
       RuleExpression=11, RuleAssignExpression=12, RuleEqualExpression=13,
       RuleNotEqualExpression=14, RuleGreaterExpression=15, RuleLessExpression=16,
-      RuleLessEqualExpression=17, RuleIdExpression=18, RuleTypeLiteral=19,
-      RuleBasicType=20, RuleLiteral=21, RuleStrLiteral=22, RuleCharLiteral=23,
-      RuleIntLiteral=24, RuleFloatLiteral=25, RuleBoolenLiteral=26
+      RuleLessEqualExpression=17, RuleGreaterEqualExpression=18, RuleIdExpression=19,
+      RuleTypeLiteral=20, RuleBasicType=21, RuleLiteral=22, RuleStrLiteral=23,
+      RuleCharLiteral=24, RuleIntLiteral=25, RuleFloatLiteral=26, RuleBoolenLiteral=27
   };
 
   explicit RiddleParser(antlr4::TokenStream *input);
@@ -88,6 +88,8 @@ public:
     class LessExpressionContext;
 
     class LessEqualExpressionContext;
+
+    class GreaterEqualExpressionContext;
 
     class IdExpressionContext;
 
@@ -527,7 +529,7 @@ public:
         LessEqualExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
 
-        PrimaryExpressionContext *primaryExpression();
+        GreaterEqualExpressionContext *greaterEqualExpression();
 
         std::vector<LessEqualExpressionContext *> lessEqualExpression();
 
@@ -545,6 +547,32 @@ public:
     LessEqualExpressionContext *lessEqualExpression();
 
     LessEqualExpressionContext *lessEqualExpression(int precedence);
+
+    class GreaterEqualExpressionContext :public antlr4::ParserRuleContext{
+    public:
+        GreaterEqualExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+
+        virtual size_t getRuleIndex() const override;
+
+        PrimaryExpressionContext *primaryExpression();
+
+        std::vector<GreaterEqualExpressionContext *> greaterEqualExpression();
+
+        GreaterEqualExpressionContext *greaterEqualExpression(size_t i);
+
+        antlr4::tree::TerminalNode *GreaterEqual();
+
+        virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+
+    };
+
+    GreaterEqualExpressionContext *greaterEqualExpression();
+
+    GreaterEqualExpressionContext *greaterEqualExpression(int precedence);
 
     class IdExpressionContext :public antlr4::ParserRuleContext{
   public:
@@ -719,6 +747,8 @@ public:
     bool lessExpressionSempred(LessExpressionContext *_localctx, size_t predicateIndex);
 
     bool lessEqualExpressionSempred(LessEqualExpressionContext *_localctx, size_t predicateIndex);
+
+    bool greaterEqualExpressionSempred(GreaterEqualExpressionContext *_localctx, size_t predicateIndex);
 
   // By default the static state used to implement the parser is lazily initialized during the first
   // call to the constructor. You can call this function if you wish to initialize the static state
