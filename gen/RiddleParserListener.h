@@ -78,13 +78,21 @@ public:
 
     virtual void exitLessExpression(RiddleParser::LessExpressionContext *ctx) = 0;
 
-    virtual void enterLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx) = 0;
+    virtual void enterLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx) = 0;
 
-    virtual void exitLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx) = 0;
+    virtual void exitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx) = 0;
 
-    virtual void enterGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) = 0;
+    virtual void enterGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx) = 0;
 
-    virtual void exitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) = 0;
+    virtual void exitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx) = 0;
+
+    virtual void enterPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *ctx) = 0;
+
+    virtual void exitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *ctx) = 0;
+
+    virtual void enterMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) = 0;
+
+    virtual void exitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) = 0;
 
     virtual void enterIdExpression(RiddleParser::IdExpressionContext *ctx) = 0;
 

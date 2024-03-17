@@ -49,7 +49,7 @@ std::any toAstVisitor::visitNotEqualExpression(RiddleParser::NotEqualExpressionC
     return {};
 }
 
-std::any toAstVisitor::visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx){
+std::any toAstVisitor::visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx){
     if(ctx->children.size() == 1){
         auto temp=ctx->children[0]->children;
         ctx->children=temp;
@@ -58,7 +58,7 @@ std::any toAstVisitor::visitLessEqualExpression(RiddleParser::LessEqualExpressio
     return {};
 }
 
-std::any toAstVisitor::visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx){
+std::any toAstVisitor::visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx){
     if(ctx->children.size() == 1){
         auto temp=ctx->children[0]->children;
         ctx->children=temp;
@@ -77,6 +77,24 @@ std::any toAstVisitor::visitExpression(RiddleParser::ExpressionContext *ctx){
 }
 
 std::any toAstVisitor::visitLiteral(RiddleParser::LiteralContext *ctx){
+    if(ctx->children.size() == 1){
+        auto temp=ctx->children[0]->children;
+        ctx->children=temp;
+        visit(ctx);
+    } else visitChildren(ctx);
+    return {};
+}
+
+std::any toAstVisitor::visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *ctx){
+    if(ctx->children.size() == 1){
+        auto temp=ctx->children[0]->children;
+        ctx->children=temp;
+        visit(ctx);
+    } else visitChildren(ctx);
+    return {};
+}
+
+std::any toAstVisitor::visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx){
     if(ctx->children.size() == 1){
         auto temp=ctx->children[0]->children;
         ctx->children=temp;

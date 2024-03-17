@@ -11,6 +11,7 @@
 #include <vector>
 #include "visitor.h"
 
+typedef std::string uuid_t;
 //表示语言中的对象
 class Object{
 public:
@@ -20,6 +21,8 @@ public:
     std::any _value;
     //唯一标识符
     std::string UUID;
+    //引用计数
+    std::size_t count;
 };
 
 

@@ -34,9 +34,10 @@ public:
       RuleWhile=7, RuleFuncDefine=8, RuleFuncBody=9, RuleBlock=10,
       RuleExpression=11, RuleAssignExpression=12, RuleEqualExpression=13,
       RuleNotEqualExpression=14, RuleGreaterExpression=15, RuleLessExpression=16,
-      RuleLessEqualExpression=17, RuleGreaterEqualExpression=18, RuleIdExpression=19,
-      RuleTypeLiteral=20, RuleBasicType=21, RuleLiteral=22, RuleStrLiteral=23,
-      RuleCharLiteral=24, RuleIntLiteral=25, RuleFloatLiteral=26, RuleBoolenLiteral=27
+      RuleLessAssignExpression=17, RuleGreaterAssignExpression=18, RulePlusAssignExpression=19,
+      RuleMinusAssignExpression=20, RuleIdExpression=21, RuleTypeLiteral=22,
+      RuleBasicType=23, RuleLiteral=24, RuleStrLiteral=25, RuleCharLiteral=26,
+      RuleIntLiteral=27, RuleFloatLiteral=28, RuleBoolenLiteral=29
   };
 
   explicit RiddleParser(antlr4::TokenStream *input);
@@ -87,9 +88,13 @@ public:
 
     class LessExpressionContext;
 
-    class LessEqualExpressionContext;
+    class LessAssignExpressionContext;
 
-    class GreaterEqualExpressionContext;
+    class GreaterAssignExpressionContext;
+
+    class PlusAssignExpressionContext;
+
+    class MinusAssignExpressionContext;
 
     class IdExpressionContext;
 
@@ -505,7 +510,7 @@ public:
         LessExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
 
-        LessEqualExpressionContext *lessEqualExpression();
+        LessAssignExpressionContext *lessAssignExpression();
 
         std::vector<LessExpressionContext *> lessExpression();
 
@@ -524,16 +529,16 @@ public:
 
     LessExpressionContext *lessExpression(int precedence);
 
-    class LessEqualExpressionContext :public antlr4::ParserRuleContext{
+    class LessAssignExpressionContext :public antlr4::ParserRuleContext{
   public:
-        LessEqualExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+        LessAssignExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
 
-        GreaterEqualExpressionContext *greaterEqualExpression();
+        GreaterAssignExpressionContext *greaterAssignExpression();
 
-        std::vector<LessEqualExpressionContext *> lessEqualExpression();
+        std::vector<LessAssignExpressionContext *> lessAssignExpression();
 
-        LessEqualExpressionContext *lessEqualExpression(size_t i);
+        LessAssignExpressionContext *lessAssignExpression(size_t i);
 
         antlr4::tree::TerminalNode *LessEqual();
 
@@ -544,21 +549,21 @@ public:
    
   };
 
-    LessEqualExpressionContext *lessEqualExpression();
+    LessAssignExpressionContext *lessAssignExpression();
 
-    LessEqualExpressionContext *lessEqualExpression(int precedence);
+    LessAssignExpressionContext *lessAssignExpression(int precedence);
 
-    class GreaterEqualExpressionContext :public antlr4::ParserRuleContext{
+    class GreaterAssignExpressionContext :public antlr4::ParserRuleContext{
     public:
-        GreaterEqualExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+        GreaterAssignExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
 
         virtual size_t getRuleIndex() const override;
 
         PrimaryExpressionContext *primaryExpression();
 
-        std::vector<GreaterEqualExpressionContext *> greaterEqualExpression();
+        std::vector<GreaterAssignExpressionContext *> greaterAssignExpression();
 
-        GreaterEqualExpressionContext *greaterEqualExpression(size_t i);
+        GreaterAssignExpressionContext *greaterAssignExpression(size_t i);
 
         antlr4::tree::TerminalNode *GreaterEqual();
 
@@ -570,9 +575,41 @@ public:
 
     };
 
-    GreaterEqualExpressionContext *greaterEqualExpression();
+    GreaterAssignExpressionContext *greaterAssignExpression();
 
-    GreaterEqualExpressionContext *greaterEqualExpression(int precedence);
+    GreaterAssignExpressionContext *greaterAssignExpression(int precedence);
+
+    class PlusAssignExpressionContext :public antlr4::ParserRuleContext{
+    public:
+        PlusAssignExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+
+        virtual size_t getRuleIndex() const override;
+
+        virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+
+    };
+
+    PlusAssignExpressionContext *plusAssignExpression();
+
+    class MinusAssignExpressionContext :public antlr4::ParserRuleContext{
+    public:
+        MinusAssignExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+
+        virtual size_t getRuleIndex() const override;
+
+        virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+
+    };
+
+    MinusAssignExpressionContext *minusAssignExpression();
 
     class IdExpressionContext :public antlr4::ParserRuleContext{
   public:
@@ -746,9 +783,9 @@ public:
 
     bool lessExpressionSempred(LessExpressionContext *_localctx, size_t predicateIndex);
 
-    bool lessEqualExpressionSempred(LessEqualExpressionContext *_localctx, size_t predicateIndex);
+    bool lessAssignExpressionSempred(LessAssignExpressionContext *_localctx, size_t predicateIndex);
 
-    bool greaterEqualExpressionSempred(GreaterEqualExpressionContext *_localctx, size_t predicateIndex);
+    bool greaterAssignExpressionSempred(GreaterAssignExpressionContext *_localctx, size_t predicateIndex);
 
   // By default the static state used to implement the parser is lazily initialized during the first
   // call to the constructor. You can call this function if you wish to initialize the static state

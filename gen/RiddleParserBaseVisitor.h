@@ -83,11 +83,19 @@ public:
     return visitChildren(ctx);
   }
 
-    virtual std::any visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx) override{
+    virtual std::any visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 
-    virtual std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) override{
+    virtual std::any visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 

@@ -80,6 +80,7 @@ equalExpression
     | <assoc = right> equalExpression Equal equalExpression
     ;
 
+//不等于表达式
 notEqualExpression
     : greaterExpression
     | <assoc = right> notEqualExpression NotEqual notEqualExpression
@@ -93,20 +94,76 @@ greaterExpression
 
 //小于表达式
 lessExpression
-    : lessEqualExpression
+    : lessAssignExpression
     | <assoc = right> lessExpression Less lessExpression
     ;
 
 //小于等于表达式
-lessEqualExpression
-    : greaterEqualExpression
-    | <assoc = right> lessEqualExpression LessEqual lessEqualExpression
+lessAssignExpression
+    : greaterAssignExpression
+    | <assoc = right> lessAssignExpression LessEqual lessAssignExpression
     ;
 
 //大于等于表达式
-greaterEqualExpression
+greaterAssignExpression
+    : plusAssignExpression
+    | <assoc = right> greaterAssignExpression GreaterEqual greaterAssignExpression
+    ;
+
+//加等于表达式
+plusAssignExpression
+    : minusAssignExpression
+    | <assoc = right> plusAssignExpression PlusAssign plusAssignExpression
+    ;
+
+//减等于表达式
+minusAssignExpression
+    : starAssignExpression
+    | <assoc = right> minusAssignExpression MinusAssign minusAssignExpression
+    ;
+
+//乘等于表达式
+starAssignExpression
+    : divAssignExpression
+    | <assoc = right> starAssignExpression StarAssign starAssignExpression
+    ;
+
+//除等于表达式
+divAssignExpression
+    : modAssignExpression
+    | <assoc = right> divAssignExpression DivAssign divAssignExpression
+    ;
+
+//模等于表达式
+modAssignExpression
+    : xorAssignExpression
+    | <assoc = right> modAssignExpression ModAssign modAssignExpression
+    ;
+
+//异或等于表达式
+xorAssignExpression
+    : andAssignExpression
+    | <assoc = right> xorAssignExpression XorAssign xorAssignExpression
+    ;
+
+andAssignExpression
+    : orAssignExpression
+    | <assoc = right> andAssignExpression AndAssign andAssignExpression
+    ;
+
+orAssignExpression
+    : leftShiftAssignExpression
+    | <assoc = right> orAssignExpression OrAssign orAssignExpression
+    ;
+
+leftShiftAssignExpression
+    : rightShiftAssignExpression
+    | <assoc = right> leftShiftAssignExpression LeftShiftAssign leftShiftAssignExpression
+    ;
+
+rightShiftAssignExpression
     : primaryExpression
-    | <assoc = right> greaterEqualExpression GreaterEqual greaterEqualExpression
+    | <assoc = right> rightShiftAssignExpression RightShiftAssign rightShiftAssignExpression
     ;
 
 idExpression

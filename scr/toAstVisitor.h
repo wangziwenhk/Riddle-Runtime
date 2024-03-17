@@ -10,21 +10,19 @@
 class toAstVisitor :public RiddleParserBaseVisitor{
 public:
     std::any visitAssignExpression(RiddleParser::AssignExpressionContext *ctx) override;
-
     std::any visitEqualExpression(RiddleParser::EqualExpressionContext *ctx) override;
-
     std::any visitNotEqualExpression(RiddleParser::NotEqualExpressionContext *ctx) override;
-
     std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *ctx) override;
-
     std::any visitLessExpression(RiddleParser::LessExpressionContext *ctx) override;
 
-    std::any visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *ctx) override;
+    std::any visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx) override;
 
-    std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *ctx) override;
+    std::any visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx) override;
 
+    std::any visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *ctx) override;
+
+    std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) override;
     std::any visitExpression(RiddleParser::ExpressionContext *ctx) override;
-
     std::any visitLiteral(RiddleParser::LiteralContext *ctx) override;
 };
 

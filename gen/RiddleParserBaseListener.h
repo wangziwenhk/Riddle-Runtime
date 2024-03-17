@@ -80,13 +80,21 @@ public:
 
     virtual void exitLessExpression(RiddleParser::LessExpressionContext * /*ctx*/) override{}
 
-    virtual void enterLessEqualExpression(RiddleParser::LessEqualExpressionContext * /*ctx*/) override{}
+    virtual void enterLessAssignExpression(RiddleParser::LessAssignExpressionContext * /*ctx*/) override{}
 
-    virtual void exitLessEqualExpression(RiddleParser::LessEqualExpressionContext * /*ctx*/) override{}
+    virtual void exitLessAssignExpression(RiddleParser::LessAssignExpressionContext * /*ctx*/) override{}
 
-    virtual void enterGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext * /*ctx*/) override{}
+    virtual void enterGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext * /*ctx*/) override{}
 
-    virtual void exitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext * /*ctx*/) override{}
+    virtual void exitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void enterPlusAssignExpression(RiddleParser::PlusAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void exitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void enterMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void exitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
 
     virtual void enterIdExpression(RiddleParser::IdExpressionContext * /*ctx*/) override{}
 

@@ -53,9 +53,13 @@ public:
 
     virtual std::any visitLessExpression(RiddleParser::LessExpressionContext *context) = 0;
 
-    virtual std::any visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *context) = 0;
+    virtual std::any visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *context) = 0;
 
-    virtual std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *context) = 0;
+    virtual std::any visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *context) = 0;
+
+    virtual std::any visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *context) = 0;
+
+    virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *context) = 0;
 
     virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
 
