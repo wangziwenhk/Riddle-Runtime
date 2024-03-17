@@ -2,36 +2,38 @@
 #define RIDDLE_OBJMANAGER_H
 #include "Tools.h"
 #include "Object.h"
-
+#include <string>
+#include <map>
 
 class ObjManager{
 private:
-    //存储不同作用域中不同标识符所对应的UUID
-    std::map<std::string, std::stack<std::string>> uuids;
-    //存储不同UUID所对应的对象
-    std::map<std::string, Object> objects;
-    //存储当前作用域中的新定义的对象
-    std::stack<std::set<std::string>> new_define;
+    //当前环境下的标识符来表示对应的对象的uuid
+    std::map<std::string,std::stack<uuid_t>>uuids;
+    //唯一标识符对应的对象
+    std::map<uuid_t,Object>objects;
+    //当前作用域内新定义的对象的标识符(方便退出作用域后销毁)
+    std::stack<std::set<std::string>>newDefine;
 public:
-    //进入新的作用域
-    void enter_scope();
-
-    //退出作用域
-    void out_scope();
-
-    //在当前作用域中定义一个变量
-    bool define_obj(const std::string & name, const std::string & type,const std::any & value=NULL);
-
-
-    //获取一个对象的值
-    std::any get_value(const std::string & name);
-
-    //一个变量是否存在
-    bool is_have(const std::string & name);
-
-    //设置一个对象的值
-    void set_value(const std::string & name,const std::any & value);
-
+    void inSpace(){
+        newDefine.emplace();
+    }
+    void outSpace(){
+        for(auto name:newDefine.top()){
+            deleteIdentfier(name);
+        }
+        newDefine.pop();
+    }
+    //newDefine是不会更新删除的,所以这个不能作为delete关键字
+    void deleteIdentfier(const std::string& name){
+        const uuid_t uuid = uuids[name].top();
+        if(objects[uuid].count==1)objects.erase(uuid);
+        if(!uuids[name].empty()){
+            uuids[name].pop();
+            if(uuids[name].empty()){
+                uuids.erase(name);
+            }
+        }
+    }
 };
 extern ObjManager MainManager;
 #endif //RIDDLE_OBJMANAGER_H

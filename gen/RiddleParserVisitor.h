@@ -21,47 +21,63 @@ public:
    */
     virtual std::any visitProgram(RiddleParser::ProgramContext *context) = 0;
 
+    virtual std::any visitNewline_statment(RiddleParser::Newline_statmentContext *context) = 0;
+
     virtual std::any visitStatment(RiddleParser::StatmentContext *context) = 0;
+
+    virtual std::any visitPrint(RiddleParser::PrintContext *context) = 0;
 
     virtual std::any visitPrimaryExpression(RiddleParser::PrimaryExpressionContext *context) = 0;
 
-    virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
+    virtual std::any visitVariableDefine(RiddleParser::VariableDefineContext *context) = 0;
 
-    virtual std::any visitIdentifierSet(RiddleParser::IdentifierSetContext *context) = 0;
+    virtual std::any visitIfExpression(RiddleParser::IfExpressionContext *context) = 0;
 
-    virtual std::any visitFuncDefintion(RiddleParser::FuncDefintionContext *context) = 0;
+    virtual std::any visitWhile(RiddleParser::WhileContext *context) = 0;
 
-    virtual std::any visitFuncExpression(RiddleParser::FuncExpressionContext *context) = 0;
+    virtual std::any visitFuncDefine(RiddleParser::FuncDefineContext *context) = 0;
 
     virtual std::any visitFuncBody(RiddleParser::FuncBodyContext *context) = 0;
 
-    virtual std::any visitOneValDeclaration(RiddleParser::OneValDeclarationContext *context) = 0;
+    virtual std::any visitBlock(RiddleParser::BlockContext *context) = 0;
 
-    virtual std::any visitOneValDefintion(RiddleParser::OneValDefintionContext *context) = 0;
+    virtual std::any visitExpression(RiddleParser::ExpressionContext *context) = 0;
 
-    virtual std::any visitValDefintion(RiddleParser::ValDefintionContext *context) = 0;
+    virtual std::any visitAssignExpression(RiddleParser::AssignExpressionContext *context) = 0;
 
-    virtual std::any visitAssignmentExpression(RiddleParser::AssignmentExpressionContext *context) = 0;
+    virtual std::any visitEqualExpression(RiddleParser::EqualExpressionContext *context) = 0;
 
-    virtual std::any visitTheTypeName(RiddleParser::TheTypeNameContext *context) = 0;
+    virtual std::any visitNotEqualExpression(RiddleParser::NotEqualExpressionContext *context) = 0;
 
-    virtual std::any visitTypeSpecifier(RiddleParser::TypeSpecifierContext *context) = 0;
+    virtual std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *context) = 0;
 
-    virtual std::any visitClassName(RiddleParser::ClassNameContext *context) = 0;
+    virtual std::any visitLessExpression(RiddleParser::LessExpressionContext *context) = 0;
 
-    virtual std::any visitTheOperator(RiddleParser::TheOperatorContext *context) = 0;
+    virtual std::any visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *context) = 0;
+
+    virtual std::any visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *context) = 0;
+
+    virtual std::any visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *context) = 0;
+
+    virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *context) = 0;
+
+    virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
+
+    virtual std::any visitTypeLiteral(RiddleParser::TypeLiteralContext *context) = 0;
+
+    virtual std::any visitBasicType(RiddleParser::BasicTypeContext *context) = 0;
 
     virtual std::any visitLiteral(RiddleParser::LiteralContext *context) = 0;
 
-    virtual std::any visitIntLiteral(RiddleParser::IntLiteralContext *context) = 0;
+    virtual std::any visitStrLiteral(RiddleParser::StrLiteralContext *context) = 0;
 
     virtual std::any visitCharLiteral(RiddleParser::CharLiteralContext *context) = 0;
 
+    virtual std::any visitIntLiteral(RiddleParser::IntLiteralContext *context) = 0;
+
     virtual std::any visitFloatLiteral(RiddleParser::FloatLiteralContext *context) = 0;
 
-    virtual std::any visitStrLiteral(RiddleParser::StrLiteralContext *context) = 0;
-
-    virtual std::any visitBoolLiteral(RiddleParser::BoolLiteralContext *context) = 0;
+    virtual std::any visitBoolenLiteral(RiddleParser::BoolenLiteralContext *context) = 0;
 
 
 };

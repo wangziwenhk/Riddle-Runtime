@@ -1,6 +1,7 @@
 #include "RiddleParser.h"
 #include "RiddleLexer.h"
 #include "visitor.h"
+#include "toAstVisitor.h"
 using namespace std;
 int main(){
     //设置控制台编码
@@ -14,8 +15,12 @@ int main(){
     RiddleParser parser(&tokens);
     // 开始解析，获取语法树的根节点
     RiddleParser::ProgramContext* tree = parser.program();
-    Visitor myVisitor;
 
-    myVisitor.visit(tree);
+    toAstVisitor visitor;
+    visitor.visit(tree);
+    cout << tree->toStringTree(true);
+
+//    Visitor myVisitor;
+//    myVisitor.visit(tree);
     return 0;
 }
