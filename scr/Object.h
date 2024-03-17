@@ -13,23 +13,13 @@
 
 //表示语言中的对象
 class Object{
-private:
-    std::string _type;
-    std::any _value;
-    std::string UUID;
-    std::map<std::string, RiddleParser::FuncDefintionContext *> func;
 public:
-    std::any runFunc(const std::string &name, const std::vector<std::any> &parameters);
-
-    void setFunc(const std::string &name, RiddleParser::FuncDefintionContext *function);
-
-    RiddleParser::FuncDefintionContext * funcOf(const std::string &name);
-
-    std::any &valueOf();
-
-    std::string &hashCode();
-
-    std::string &typeOf();
+    //所属的类型，名称为对应类型的类名
+    std::string _type;
+    //值
+    std::any _value;
+    //唯一标识符
+    std::string UUID;
 };
 
 

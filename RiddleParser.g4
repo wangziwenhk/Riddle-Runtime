@@ -2,164 +2,152 @@ parser grammar RiddleParser;
 options {
     tokenVocab = RiddleLexer;
 }
-//程序开始的点
 program
-    : statment*
+    : newline_statment* statment? EOF
     ;
-//语句
+
+newline_statment
+    : statment NewLine
+    | NewLine
+    ;
+
 statment
-    : funcDefintion
-    | oneValDeclaration Semi
-    | valDefintion Semi
-    | assignmentExpression Semi
+    : variableDefine
+    | expression
+    | block
+    | funcDefine
+    | while
+    | print
+    | statment Semi statment?
+    | Semi
     ;
 
+//内置的外部输出控制，临时测试用
+print
+    : Print LeftParen expression RightParen
+    ;
 
-//主要表达式
+//既是表达式也是语句
 primaryExpression
     : literal
     | idExpression
-    | assignmentExpression
-    | funcExpression
-    ;
-
-//标识符表达式
-idExpression
-    : Identifier //当前作用域中的对象
-    | (Identifier Dot)+ Identifier //某个对象中的对象
-    ;
-
-identifierSet
-    : Identifier //当前作用域中的对象
-    | (Identifier Dot)+ Identifier //某个对象中的对象
+    | LeftParen expression RightParen
+    | ifExpression
     ;
 
 
-//函数定义
-funcDefintion
-    : theTypeName Identifier LeftParen ((oneValDeclaration (Comma oneValDeclaration)* (Comma oneValDefintion)*) | (oneValDefintion (Comma oneValDefintion)*))? RightParen funcBody
+variableDefine
+    : (Var | Val) (Identfier(Assign expression)?) (Comma (Identfier(Assign expression)?))*
     ;
 
-//函数调用
-funcExpression
-    : Identifier LeftParen (primaryExpression(Comma primaryExpression)*)? RightParen
+ifExpression
+    : If LeftParen expression RightParen statment
+      (Else statment)?
     ;
 
-//函数的代码部分
+while
+    : While LeftParen expression RightParen statment
+    ;
+
+//todo 完成funcDefine的传参处理
+funcDefine
+    : Fun Identfier LeftParen (Identfier Colon typeLiteral)* RightParen funcBody
+    ;
+
+//这里funcBody还需要额外处理return
 funcBody
     : LeftBrace statment* RightBrace
     ;
 
-//单个变量声明
-oneValDeclaration
-    : theTypeName Identifier
+block
+    : LeftBrace statment* RightBrace
     ;
 
-//单个变量定义
-oneValDefintion
-    : theTypeName Identifier Assign primaryExpression
+//表达式
+expression
+    : assignExpression
     ;
-
-//变量定义或声明
-valDefintion
-    : theTypeName ((Identifier Assign primaryExpression)|Identifier) (Comma ((Identifier Assign primaryExpression)|Identifier))*
-    ;
-
-
 
 //赋值表达式
-assignmentExpression
-    : identifierSet Assign primaryExpression
+assignExpression
+    : equalExpression
+    | Identfier Assign assignExpression
     ;
 
-//类型名称
-theTypeName
-    : className
-    | typeSpecifier
+//等于表达式
+equalExpression
+    : notEqualExpression
+    | <assoc = right> equalExpression Equal equalExpression
     ;
 
-//类型说明符
-typeSpecifier
-    : Char
-    | String
-    | Int
+notEqualExpression
+    : greaterExpression
+    | <assoc = right> notEqualExpression NotEqual notEqualExpression
+    ;
+
+//大于表达式
+greaterExpression
+    : lessExpression
+    | <assoc = right> greaterExpression Greater greaterExpression
+    ;
+
+//小于表达式
+lessExpression
+    : lessEqualExpression
+    | <assoc = right> lessExpression Less lessExpression
+    ;
+
+//小于等于表达式
+lessEqualExpression
+    : primaryExpression
+    | <assoc = right> lessEqualExpression LessEqual lessEqualExpression
+    ;
+
+idExpression
+    : Identfier
+    ;
+
+typeLiteral
+    : basicType
+    ;
+
+basicType
+    : Int
+    | Char
     | Float
-    | Void
-    | Any
-    ;
-
-//类名
-className
-    : Identifier
+    | Boolen
+    | String
     ;
 
 
 
-//操作符大全
-theOperator
-    : New (LeftParen RightParen)?
-    | Delete (LeftParen RightParen)?
-    | Plus
-    | Minus
-    | Star
-    | Div
-    | Mod
-    | Caret
-    | And
-    | Or
-    | Tilde
-    | Not
-    | Assign
-    | Less
-    | Greater
-    | PlusAssign
-    | MinusAssign
-    | StarAssign
-    | DivAssign
-    | ModAssign
-    | XorAssign
-    | AndAssign
-    | OrAssign
-    | LeftShiftAssign
-    | RightShiftAssign
-    | Equal
-    | NotEqual
-    | LessEqual
-    | GreaterEqual
-    | AndAnd
-    | OrOr
-    | PlusPlus
-    | MinusMinus
-    | Comma
-    | Arrow
-    | LeftParen RightParen
-    | LeftBracket RightBracket
-    ;
 //字面量
 literal
-    : boolLiteral
-    | intLiteral
+    : intLiteral
+    | strLiteral
     | charLiteral
     | floatLiteral
-    | strLiteral
-    ;
-
-intLiteral
-    : IntegerLiteral
-    ;
-
-charLiteral
-    : CharacterLiteral
-    ;
-
-floatLiteral
-    : FloatingLiteral
+    | boolenLiteral
     ;
 
 strLiteral
     : StringLiteral
     ;
 
-boolLiteral
-    : True_ | False_
+charLiteral
+    : CharLiteral
+    ;
+
+//整数字面量
+intLiteral
+    : IntegerLiteral
+    ;
+
+floatLiteral
+    : FloatLiteral
+    ;
+
+boolenLiteral
+    : True
+    | False
     ;
