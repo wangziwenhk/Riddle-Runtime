@@ -24,6 +24,10 @@ public:
     std::any visitFuncDefintion(RiddleParser::FuncDefintionContext *ctx) override;
     std::any visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx) override;
     std::any visitOneValDeclaration(RiddleParser::OneValDeclarationContext *ctx) override;
+
+    std::any visitFuncBody(RiddleParser::FuncBodyContext *ctx) override;
+
+    std::any visitReturnValue(RiddleParser::ReturnValueContext *ctx) override;
 };
 
 #endif //RIDDLE_VISITOR_H

@@ -20,6 +20,10 @@ public:
   virtual void enterStatment(RiddleParser::StatmentContext *ctx) = 0;
   virtual void exitStatment(RiddleParser::StatmentContext *ctx) = 0;
 
+    virtual void enterReturnValue(RiddleParser::ReturnValueContext *ctx) = 0;
+
+    virtual void exitReturnValue(RiddleParser::ReturnValueContext *ctx) = 0;
+
   virtual void enterPrimaryExpression(RiddleParser::PrimaryExpressionContext *ctx) = 0;
   virtual void exitPrimaryExpression(RiddleParser::PrimaryExpressionContext *ctx) = 0;
 

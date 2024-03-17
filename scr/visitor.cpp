@@ -241,3 +241,15 @@ std::any Visitor::visitOneValDefintion(RiddleParser::OneValDefintionContext *ctx
     MainManager.define_obj(name, type, value);
     return name;
 }
+
+std::any Visitor::visitFuncBody(RiddleParser::FuncBodyContext *ctx){
+    for(int i=1;i < ctx->children.size()-1;i++){
+        if(auto funcCtx=dynamic_cast<RiddleParser::ReturnValueContext *>(ctx->children[i])){
+
+        }
+    }
+}
+
+std::any Visitor::visitReturnValue(RiddleParser::ReturnValueContext *ctx){
+    return visit(ctx->children[2]);
+}

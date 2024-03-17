@@ -23,6 +23,10 @@ public:
     return visitChildren(ctx);
   }
 
+    virtual std::any visitReturnValue(RiddleParser::ReturnValueContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
   virtual std::any visitPrimaryExpression(RiddleParser::PrimaryExpressionContext *ctx) override {
     return visitChildren(ctx);
   }

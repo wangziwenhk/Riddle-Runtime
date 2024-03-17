@@ -22,6 +22,10 @@ public:
   virtual void enterStatment(RiddleParser::StatmentContext * /*ctx*/) override { }
   virtual void exitStatment(RiddleParser::StatmentContext * /*ctx*/) override { }
 
+    virtual void enterReturnValue(RiddleParser::ReturnValueContext * /*ctx*/) override{}
+
+    virtual void exitReturnValue(RiddleParser::ReturnValueContext * /*ctx*/) override{}
+
   virtual void enterPrimaryExpression(RiddleParser::PrimaryExpressionContext * /*ctx*/) override { }
   virtual void exitPrimaryExpression(RiddleParser::PrimaryExpressionContext * /*ctx*/) override { }
 

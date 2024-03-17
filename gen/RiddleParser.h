@@ -31,13 +31,13 @@ public:
   };
 
   enum {
-    RuleProgram = 0, RuleStatment = 1, RulePrimaryExpression = 2, RuleIdExpression = 3, 
-    RuleIdentifierSet = 4, RuleFuncDefintion = 5, RuleFuncExpression = 6, 
-    RuleFuncBody = 7, RuleOneValDeclaration = 8, RuleOneValDefintion = 9, 
-    RuleValDefintion = 10, RuleAssignmentExpression = 11, RuleTheTypeName = 12, 
-    RuleTypeSpecifier = 13, RuleClassName = 14, RuleTheOperator = 15, RuleLiteral = 16, 
-    RuleIntLiteral = 17, RuleCharLiteral = 18, RuleFloatLiteral = 19, RuleStrLiteral = 20, 
-    RuleBoolLiteral = 21
+      RuleProgram=0, RuleStatment=1, RuleReturnValue=2, RulePrimaryExpression=3,
+      RuleIdExpression=4, RuleIdentifierSet=5, RuleFuncDefintion=6,
+      RuleFuncExpression=7, RuleFuncBody=8, RuleOneValDeclaration=9,
+      RuleOneValDefintion=10, RuleValDefintion=11, RuleAssignmentExpression=12,
+      RuleTheTypeName=13, RuleTypeSpecifier=14, RuleClassName=15, RuleTheOperator=16,
+      RuleLiteral=17, RuleIntLiteral=18, RuleCharLiteral=19, RuleFloatLiteral=20,
+      RuleStrLiteral=21, RuleBoolLiteral=22
   };
 
   explicit RiddleParser(antlr4::TokenStream *input);
@@ -59,6 +59,8 @@ public:
 
   class ProgramContext;
   class StatmentContext;
+
+    class ReturnValueContext;
   class PrimaryExpressionContext;
   class IdExpressionContext;
   class IdentifierSetContext;
@@ -106,6 +108,8 @@ public:
     ValDefintionContext *valDefintion();
     AssignmentExpressionContext *assignmentExpression();
 
+      ReturnValueContext *returnValue();
+
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 
@@ -114,6 +118,26 @@ public:
   };
 
   StatmentContext* statment();
+
+    class ReturnValueContext :public antlr4::ParserRuleContext{
+    public:
+        ReturnValueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+
+        virtual size_t getRuleIndex() const override;
+
+        antlr4::tree::TerminalNode *Return();
+
+        PrimaryExpressionContext *primaryExpression();
+
+        virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+        virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+
+    };
+
+    ReturnValueContext *returnValue();
 
   class  PrimaryExpressionContext : public antlr4::ParserRuleContext {
   public:

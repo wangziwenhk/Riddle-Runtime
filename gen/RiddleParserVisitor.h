@@ -23,6 +23,8 @@ public:
 
     virtual std::any visitStatment(RiddleParser::StatmentContext *context) = 0;
 
+    virtual std::any visitReturnValue(RiddleParser::ReturnValueContext *context) = 0;
+
     virtual std::any visitPrimaryExpression(RiddleParser::PrimaryExpressionContext *context) = 0;
 
     virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
