@@ -162,8 +162,13 @@ leftShiftAssignExpression
     ;
 
 rightShiftAssignExpression
-    : primaryExpression
+    : andAndExpression
     | <assoc = right> rightShiftAssignExpression RightShiftAssign rightShiftAssignExpression
+    ;
+
+andAndExpression
+    : primaryExpression
+    | <assoc = right> andAndExpression AndAnd andAndExpression
     ;
 
 idExpression
