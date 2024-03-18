@@ -35,6 +35,10 @@ primaryExpression
     | ifExpression
     ;
 
+idExpression
+    : Identfier
+    | idExpression Dot idExpression
+    ;
 
 variableDefine
     : (Var | Val) (Identfier(Assign expression)?) (Comma (Identfier(Assign expression)?))*
@@ -65,115 +69,39 @@ block
 
 //表达式
 expression
-    : assignExpression
+    : primaryExpression #t_primaryExpression  //这个就是一个占位符，不需要实现
+    //一级优先级
+    | idExpression LeftBracket expression RightBracket #bracketExpression
+    | idExpression PlusPlus #rightPlusPlusExoression
+    | idExpression MinusMinus #rightMinusMinusExpression
+    //二级优先级
+    | expression Not    expression #notExpression
+    | expression Tilde  expression #tildeExpression
+    | PlusPlus idExpression #leftPlusPlusExoression
+    | MinusMinus idExpression #leftMinusMinusExpression
+    | Plus expression #positiveExpression //取正操作符
+    | Minus expression #negativeExpression //取负操作符
+    | And idExpression #addressExpression //取地址操作符
+
+    //temp
+    | expression Plus   expression #plusExpression
+    | expression Minus  expression #minusExpression
+    | expression Star   expression #starExpression
+    | expression Div    expression #divExpression
+    | expression Mod    expression #modExpression
+    | expression Caret  expression #caretExpression
+    | expression And    expression #andExpression
+    | expression Or     expression #orExpression
+    | expression Assign expression #assignExpression
+    | expression Less   expression #lessExpression
+    | expression Greater expression #greaterExpression
+    | expression PlusAssign expression #plusAssignExpression
+    | expression MinusAssign expression #minusAssignExpression
+    | expression DivAssign expression #divAssignEpxression
+    | expression ModAssign expression #modAssignExpression
+    | expression XorAssign expression #xorAssignExpression
     ;
 
-//赋值表达式
-assignExpression
-    : equalExpression
-    | Identfier Assign assignExpression
-    ;
-
-//等于表达式
-equalExpression
-    : notEqualExpression
-    | <assoc = right> equalExpression Equal equalExpression
-    ;
-
-//不等于表达式
-notEqualExpression
-    : greaterExpression
-    | <assoc = right> notEqualExpression NotEqual notEqualExpression
-    ;
-
-//大于表达式
-greaterExpression
-    : lessExpression
-    | <assoc = right> greaterExpression Greater greaterExpression
-    ;
-
-//小于表达式
-lessExpression
-    : lessAssignExpression
-    | <assoc = right> lessExpression Less lessExpression
-    ;
-
-//小于等于表达式
-lessAssignExpression
-    : greaterAssignExpression
-    | <assoc = right> lessAssignExpression LessEqual lessAssignExpression
-    ;
-
-//大于等于表达式
-greaterAssignExpression
-    : plusAssignExpression
-    | <assoc = right> greaterAssignExpression GreaterEqual greaterAssignExpression
-    ;
-
-//加等于表达式
-plusAssignExpression
-    : minusAssignExpression
-    | <assoc = right> plusAssignExpression PlusAssign plusAssignExpression
-    ;
-
-//减等于表达式
-minusAssignExpression
-    : starAssignExpression
-    | <assoc = right> minusAssignExpression MinusAssign minusAssignExpression
-    ;
-
-//乘等于表达式
-starAssignExpression
-    : divAssignExpression
-    | <assoc = right> starAssignExpression StarAssign starAssignExpression
-    ;
-
-//除等于表达式
-divAssignExpression
-    : modAssignExpression
-    | <assoc = right> divAssignExpression DivAssign divAssignExpression
-    ;
-
-//模等于表达式
-modAssignExpression
-    : xorAssignExpression
-    | <assoc = right> modAssignExpression ModAssign modAssignExpression
-    ;
-
-//异或等于表达式
-xorAssignExpression
-    : andAssignExpression
-    | <assoc = right> xorAssignExpression XorAssign xorAssignExpression
-    ;
-
-andAssignExpression
-    : orAssignExpression
-    | <assoc = right> andAssignExpression AndAssign andAssignExpression
-    ;
-
-orAssignExpression
-    : leftShiftAssignExpression
-    | <assoc = right> orAssignExpression OrAssign orAssignExpression
-    ;
-
-leftShiftAssignExpression
-    : rightShiftAssignExpression
-    | <assoc = right> leftShiftAssignExpression LeftShiftAssign leftShiftAssignExpression
-    ;
-
-rightShiftAssignExpression
-    : andAndExpression
-    | <assoc = right> rightShiftAssignExpression RightShiftAssign rightShiftAssignExpression
-    ;
-
-andAndExpression
-    : primaryExpression
-    | <assoc = right> andAndExpression AndAnd andAndExpression
-    ;
-
-idExpression
-    : Identfier
-    ;
 
 typeLiteral
     : basicType

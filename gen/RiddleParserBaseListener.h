@@ -33,6 +33,10 @@ public:
   virtual void enterPrimaryExpression(RiddleParser::PrimaryExpressionContext * /*ctx*/) override { }
   virtual void exitPrimaryExpression(RiddleParser::PrimaryExpressionContext * /*ctx*/) override { }
 
+    virtual void enterDotExpression(RiddleParser::DotExpressionContext * /*ctx*/) override{}
+
+    virtual void exitDotExpression(RiddleParser::DotExpressionContext * /*ctx*/) override{}
+
     virtual void enterVariableDefine(RiddleParser::VariableDefineContext * /*ctx*/) override{}
 
     virtual void exitVariableDefine(RiddleParser::VariableDefineContext * /*ctx*/) override{}
@@ -56,45 +60,85 @@ public:
 
     virtual void exitBlock(RiddleParser::BlockContext * /*ctx*/) override{}
 
-    virtual void enterExpression(RiddleParser::ExpressionContext * /*ctx*/) override{}
+    virtual void enterMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
 
-    virtual void exitExpression(RiddleParser::ExpressionContext * /*ctx*/) override{}
+    virtual void exitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void enterMinusExpression(RiddleParser::MinusExpressionContext * /*ctx*/) override{}
+
+    virtual void exitMinusExpression(RiddleParser::MinusExpressionContext * /*ctx*/) override{}
+
+    virtual void enterModAssignExpression(RiddleParser::ModAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void exitModAssignExpression(RiddleParser::ModAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void enterTildeExpression(RiddleParser::TildeExpressionContext * /*ctx*/) override{}
+
+    virtual void exitTildeExpression(RiddleParser::TildeExpressionContext * /*ctx*/) override{}
 
     virtual void enterAssignExpression(RiddleParser::AssignExpressionContext * /*ctx*/) override{}
 
     virtual void exitAssignExpression(RiddleParser::AssignExpressionContext * /*ctx*/) override{}
 
-    virtual void enterEqualExpression(RiddleParser::EqualExpressionContext * /*ctx*/) override{}
-
-    virtual void exitEqualExpression(RiddleParser::EqualExpressionContext * /*ctx*/) override{}
-
-    virtual void enterNotEqualExpression(RiddleParser::NotEqualExpressionContext * /*ctx*/) override{}
-
-    virtual void exitNotEqualExpression(RiddleParser::NotEqualExpressionContext * /*ctx*/) override{}
-
-    virtual void enterGreaterExpression(RiddleParser::GreaterExpressionContext * /*ctx*/) override{}
-
-    virtual void exitGreaterExpression(RiddleParser::GreaterExpressionContext * /*ctx*/) override{}
-
     virtual void enterLessExpression(RiddleParser::LessExpressionContext * /*ctx*/) override{}
 
     virtual void exitLessExpression(RiddleParser::LessExpressionContext * /*ctx*/) override{}
 
-    virtual void enterLessAssignExpression(RiddleParser::LessAssignExpressionContext * /*ctx*/) override{}
+    virtual void enterModExpression(RiddleParser::ModExpressionContext * /*ctx*/) override{}
 
-    virtual void exitLessAssignExpression(RiddleParser::LessAssignExpressionContext * /*ctx*/) override{}
+    virtual void exitModExpression(RiddleParser::ModExpressionContext * /*ctx*/) override{}
 
-    virtual void enterGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext * /*ctx*/) override{}
+    virtual void enterDivExpression(RiddleParser::DivExpressionContext * /*ctx*/) override{}
 
-    virtual void exitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext * /*ctx*/) override{}
+    virtual void exitDivExpression(RiddleParser::DivExpressionContext * /*ctx*/) override{}
+
+    virtual void enterNotExpression(RiddleParser::NotExpressionContext * /*ctx*/) override{}
+
+    virtual void exitNotExpression(RiddleParser::NotExpressionContext * /*ctx*/) override{}
+
+    virtual void enterXorAssignExpression(RiddleParser::XorAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void exitXorAssignExpression(RiddleParser::XorAssignExpressionContext * /*ctx*/) override{}
+
+    virtual void enterBracketExpression(RiddleParser::BracketExpressionContext * /*ctx*/) override{}
+
+    virtual void exitBracketExpression(RiddleParser::BracketExpressionContext * /*ctx*/) override{}
 
     virtual void enterPlusAssignExpression(RiddleParser::PlusAssignExpressionContext * /*ctx*/) override{}
 
     virtual void exitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext * /*ctx*/) override{}
 
-    virtual void enterMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
+    virtual void enterOrExpression(RiddleParser::OrExpressionContext * /*ctx*/) override{}
 
-    virtual void exitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext * /*ctx*/) override{}
+    virtual void exitOrExpression(RiddleParser::OrExpressionContext * /*ctx*/) override{}
+
+    virtual void enterAndExpression(RiddleParser::AndExpressionContext * /*ctx*/) override{}
+
+    virtual void exitAndExpression(RiddleParser::AndExpressionContext * /*ctx*/) override{}
+
+    virtual void enterGreaterExpression(RiddleParser::GreaterExpressionContext * /*ctx*/) override{}
+
+    virtual void exitGreaterExpression(RiddleParser::GreaterExpressionContext * /*ctx*/) override{}
+
+    virtual void enterDivAssignEpxression(RiddleParser::DivAssignEpxressionContext * /*ctx*/) override{}
+
+    virtual void exitDivAssignEpxression(RiddleParser::DivAssignEpxressionContext * /*ctx*/) override{}
+
+    virtual void enterCaretExpression(RiddleParser::CaretExpressionContext * /*ctx*/) override{}
+
+    virtual void exitCaretExpression(RiddleParser::CaretExpressionContext * /*ctx*/) override{}
+
+    virtual void enterPlusExpression(RiddleParser::PlusExpressionContext * /*ctx*/) override{}
+
+    virtual void exitPlusExpression(RiddleParser::PlusExpressionContext * /*ctx*/) override{}
+
+    virtual void enterT_primaryExpression(RiddleParser::T_primaryExpressionContext * /*ctx*/) override{}
+
+    virtual void exitT_primaryExpression(RiddleParser::T_primaryExpressionContext * /*ctx*/) override{}
+
+    virtual void enterStarExpression(RiddleParser::StarExpressionContext * /*ctx*/) override{}
+
+    virtual void exitStarExpression(RiddleParser::StarExpressionContext * /*ctx*/) override{}
 
     virtual void enterIdExpression(RiddleParser::IdExpressionContext * /*ctx*/) override{}
 

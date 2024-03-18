@@ -32,7 +32,7 @@ Caret: '^';
 And: '&';
 Or: '|';
 Tilde: '~';
-Not: '!' | 'not';
+Not: '!';
 Assign: '=';
 Less: '<';
 Greater: '>';
@@ -134,7 +134,7 @@ FloatLiteral
     ;
 
 Identfier
-    : NODIGIT+
+    : NODIGIT (DIGIT | NODIGIT)*
     ;
 
 

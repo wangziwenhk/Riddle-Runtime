@@ -35,6 +35,10 @@ public:
     return visitChildren(ctx);
   }
 
+    virtual std::any visitDotExpression(RiddleParser::DotExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
     virtual std::any visitVariableDefine(RiddleParser::VariableDefineContext *ctx) override{
     return visitChildren(ctx);
   }
@@ -59,7 +63,19 @@ public:
         return visitChildren(ctx);
     }
 
-    virtual std::any visitExpression(RiddleParser::ExpressionContext *ctx) override{
+    virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitMinusExpression(RiddleParser::MinusExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitModAssignExpression(RiddleParser::ModAssignExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitTildeExpression(RiddleParser::TildeExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 
@@ -67,27 +83,27 @@ public:
     return visitChildren(ctx);
   }
 
-    virtual std::any visitEqualExpression(RiddleParser::EqualExpressionContext *ctx) override{
-    return visitChildren(ctx);
-  }
-
-    virtual std::any visitNotEqualExpression(RiddleParser::NotEqualExpressionContext *ctx) override{
-    return visitChildren(ctx);
-  }
-
-    virtual std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *ctx) override{
-    return visitChildren(ctx);
-  }
-
     virtual std::any visitLessExpression(RiddleParser::LessExpressionContext *ctx) override{
-    return visitChildren(ctx);
-  }
-
-    virtual std::any visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 
-    virtual std::any visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx) override{
+    virtual std::any visitModExpression(RiddleParser::ModExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitDivExpression(RiddleParser::DivExpressionContext *ctx) override{
+    return visitChildren(ctx);
+  }
+
+    virtual std::any visitNotExpression(RiddleParser::NotExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitXorAssignExpression(RiddleParser::XorAssignExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitBracketExpression(RiddleParser::BracketExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 
@@ -95,7 +111,35 @@ public:
         return visitChildren(ctx);
     }
 
-    virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *ctx) override{
+    virtual std::any visitOrExpression(RiddleParser::OrExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitAndExpression(RiddleParser::AndExpressionContext *ctx) override{
+    return visitChildren(ctx);
+  }
+
+    virtual std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *ctx) override{
+    return visitChildren(ctx);
+  }
+
+    virtual std::any visitDivAssignEpxression(RiddleParser::DivAssignEpxressionContext *ctx) override{
+    return visitChildren(ctx);
+  }
+
+    virtual std::any visitCaretExpression(RiddleParser::CaretExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitPlusExpression(RiddleParser::PlusExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitT_primaryExpression(RiddleParser::T_primaryExpressionContext *ctx) override{
+        return visitChildren(ctx);
+    }
+
+    virtual std::any visitStarExpression(RiddleParser::StarExpressionContext *ctx) override{
         return visitChildren(ctx);
     }
 
