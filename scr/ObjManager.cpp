@@ -19,7 +19,7 @@ void ObjManager::outSpace() {
 }
 
 void ObjManager::deleteIdentfier(const std::string &name) {
-    const uuid_t uuid = uuids[name].top();
+    const std::string uuid=uuids[name].top();
     if (objects[uuid].count == 1)objects.erase(uuid);
     if (!uuids[name].empty()) {
         uuids[name].pop();
@@ -29,8 +29,8 @@ void ObjManager::deleteIdentfier(const std::string &name) {
     }
 }
 
-uuid_t ObjManager::creatNewObject() {
-    uuid_t uuid = GetUUID();
+std::string ObjManager::creatNewObject(){
+    std::string uuid=GetUUID();
     Object newObject;
     newObject.UUID = uuid;
     newObject._type = "void";
@@ -44,12 +44,13 @@ RiddleParser::FuncBodyContext* ObjManager::findFunc(const std::string& className
     if(!funcs[className].count(funcName)){
         return nullptr;
     }
-    auto dParameter =  funcs[className][funcName]
+    auto dParameter=funcs[className][funcName];
+    return NULL;
 }
 
 //类名，参数名，有指向的参数名
-uuid_t ObjManager::construct(const std::string &className, const parameter_t& parameter) {
-    uuid_t uuid = creatNewObject();
+std::string ObjManager::construct(const std::string &className, const parameter_t &parameter){
+    std::string uuid=creatNewObject();
 
     return uuid;
 }

@@ -29,7 +29,7 @@ public:
 
     virtual std::any visitPrimaryExpression(RiddleParser::PrimaryExpressionContext *context) = 0;
 
-    virtual std::any visitDotExpression(RiddleParser::DotExpressionContext *context) = 0;
+    virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
 
     virtual std::any visitVariableDefine(RiddleParser::VariableDefineContext *context) = 0;
 
@@ -45,45 +45,83 @@ public:
 
     virtual std::any visitMinusAssignExpression(RiddleParser::MinusAssignExpressionContext *context) = 0;
 
-    virtual std::any visitMinusExpression(RiddleParser::MinusExpressionContext *context) = 0;
+    virtual std::any visitAndAssignExpression(RiddleParser::AndAssignExpressionContext *context) = 0;
 
-    virtual std::any visitModAssignExpression(RiddleParser::ModAssignExpressionContext *context) = 0;
+    virtual std::any visitOrAssignExpression(RiddleParser::OrAssignExpressionContext *context) = 0;
+
+    virtual std::any visitRightShiftAssignExpression(RiddleParser::RightShiftAssignExpressionContext *context) = 0;
+
+    virtual std::any visitNegativeExpression(RiddleParser::NegativeExpressionContext *context) = 0;
+
+    virtual std::any visitMinusExpression(RiddleParser::MinusExpressionContext *context) = 0;
 
     virtual std::any visitTildeExpression(RiddleParser::TildeExpressionContext *context) = 0;
 
-    virtual std::any visitAssignExpression(RiddleParser::AssignExpressionContext *context) = 0;
-
     virtual std::any visitLessExpression(RiddleParser::LessExpressionContext *context) = 0;
+
+    virtual std::any visitLeftPlusPlusExoression(RiddleParser::LeftPlusPlusExoressionContext *context) = 0;
+
+    virtual std::any visitLeftMinusMinusExpression(RiddleParser::LeftMinusMinusExpressionContext *context) = 0;
 
     virtual std::any visitModExpression(RiddleParser::ModExpressionContext *context) = 0;
 
-    virtual std::any visitDivExpression(RiddleParser::DivExpressionContext *context) = 0;
-
     virtual std::any visitNotExpression(RiddleParser::NotExpressionContext *context) = 0;
 
-    virtual std::any visitXorAssignExpression(RiddleParser::XorAssignExpressionContext *context) = 0;
-
-    virtual std::any visitBracketExpression(RiddleParser::BracketExpressionContext *context) = 0;
+    virtual std::any visitDivExpression(RiddleParser::DivExpressionContext *context) = 0;
 
     virtual std::any visitPlusAssignExpression(RiddleParser::PlusAssignExpressionContext *context) = 0;
 
-    virtual std::any visitOrExpression(RiddleParser::OrExpressionContext *context) = 0;
+    virtual std::any visitRightShiftExpression(RiddleParser::RightShiftExpressionContext *context) = 0;
 
     virtual std::any visitAndExpression(RiddleParser::AndExpressionContext *context) = 0;
 
-    virtual std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *context) = 0;
-
     virtual std::any visitDivAssignEpxression(RiddleParser::DivAssignEpxressionContext *context) = 0;
 
-    virtual std::any visitCaretExpression(RiddleParser::CaretExpressionContext *context) = 0;
+    virtual std::any visitLeftShiftExpression(RiddleParser::LeftShiftExpressionContext *context) = 0;
+
+    virtual std::any visitAndAndExpression(RiddleParser::AndAndExpressionContext *context) = 0;
+
+    virtual std::any visitPositiveExpression(RiddleParser::PositiveExpressionContext *context) = 0;
 
     virtual std::any visitPlusExpression(RiddleParser::PlusExpressionContext *context) = 0;
 
+    virtual std::any visitLessEqualExpression(RiddleParser::LessEqualExpressionContext *context) = 0;
+
+    virtual std::any visitEqualExpression(RiddleParser::EqualExpressionContext *context) = 0;
+
     virtual std::any visitT_primaryExpression(RiddleParser::T_primaryExpressionContext *context) = 0;
 
-    virtual std::any visitStarExpression(RiddleParser::StarExpressionContext *context) = 0;
+    virtual std::any visitOrOrExpression(RiddleParser::OrOrExpressionContext *context) = 0;
 
-    virtual std::any visitIdExpression(RiddleParser::IdExpressionContext *context) = 0;
+    virtual std::any visitModAssignExpression(RiddleParser::ModAssignExpressionContext *context) = 0;
+
+    virtual std::any visitAssignExpression(RiddleParser::AssignExpressionContext *context) = 0;
+
+    virtual std::any visitNotEqualExpression(RiddleParser::NotEqualExpressionContext *context) = 0;
+
+    virtual std::any visitXorAssignExpression(RiddleParser::XorAssignExpressionContext *context) = 0;
+
+    virtual std::any visitCommaExpression(RiddleParser::CommaExpressionContext *context) = 0;
+
+    virtual std::any visitOrExpression(RiddleParser::OrExpressionContext *context) = 0;
+
+    virtual std::any visitRightPlusPlusExoression(RiddleParser::RightPlusPlusExoressionContext *context) = 0;
+
+    virtual std::any visitLeftShiftAssignExpression(RiddleParser::LeftShiftAssignExpressionContext *context) = 0;
+
+    virtual std::any visitCallExpression(RiddleParser::CallExpressionContext *context) = 0;
+
+    virtual std::any visitGreaterExpression(RiddleParser::GreaterExpressionContext *context) = 0;
+
+    virtual std::any visitRightMinusMinusExpression(RiddleParser::RightMinusMinusExpressionContext *context) = 0;
+
+    virtual std::any visitQuoteExpression(RiddleParser::QuoteExpressionContext *context) = 0;
+
+    virtual std::any visitGreaterEqualExpression(RiddleParser::GreaterEqualExpressionContext *context) = 0;
+
+    virtual std::any visitCaretExpression(RiddleParser::CaretExpressionContext *context) = 0;
+
+    virtual std::any visitStarExpression(RiddleParser::StarExpressionContext *context) = 0;
 
     virtual std::any visitTypeLiteral(RiddleParser::TypeLiteralContext *context) = 0;
 

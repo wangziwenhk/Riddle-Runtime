@@ -5,7 +5,7 @@
 #include <combaseapi.h>
 #include <string>
 
-uuid_t GetUUID()
+std::string GetUUID()
 {
     std::string strUUID;
     GUID guid;

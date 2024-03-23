@@ -36,6 +36,8 @@ Not: '!';
 Assign: '=';
 Less: '<';
 Greater: '>';
+LeftShift : '<<' ;
+RightShift : '>>' ;
 PlusAssign: '+=';
 MinusAssign: '-=';
 StarAssign: '*=';

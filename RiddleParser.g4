@@ -71,35 +71,58 @@ block
 expression
     : primaryExpression #t_primaryExpression  //这个就是一个占位符，不需要实现
     //一级优先级
-    | idExpression LeftBracket expression RightBracket #bracketExpression
-    | idExpression PlusPlus #rightPlusPlusExoression
-    | idExpression MinusMinus #rightMinusMinusExpression
+    | idExpression LeftBracket expression RightBracket #callExpression      //函数调用
+    | idExpression PlusPlus     #rightPlusPlusExoression                    //后缀自增
+    | idExpression MinusMinus   #rightMinusMinusExpression                  //后缀自减
     //二级优先级
-    | expression Not    expression #notExpression
-    | expression Tilde  expression #tildeExpression
-    | PlusPlus idExpression #leftPlusPlusExoression
-    | MinusMinus idExpression #leftMinusMinusExpression
-    | Plus expression #positiveExpression //取正操作符
-    | Minus expression #negativeExpression //取负操作符
-    | And idExpression #addressExpression //取地址操作符
-
-    //temp
-    | expression Plus   expression #plusExpression
-    | expression Minus  expression #minusExpression
+    | <assoc = right> PlusPlus idExpression     #leftPlusPlusExoression     //前缀自增
+    | <assoc = right> MinusMinus idExpression   #leftMinusMinusExpression   //前缀自减
+    | <assoc = right> Plus expression           #positiveExpression         //取正操作符
+    | <assoc = right> Minus expression          #negativeExpression         //取负操作符
+    | <assoc = right> Not expression            #notExpression              //逻辑非操作符
+    | <assoc = right> Tilde expression          #tildeExpression            //逐位非操作符
+    | <assoc = right> And idExpression          #quoteExpression            //引用操作符
+    //三级优先级
+    | expression Mod    expression #modExpression
     | expression Star   expression #starExpression
     | expression Div    expression #divExpression
-    | expression Mod    expression #modExpression
-    | expression Caret  expression #caretExpression
+    //四级优先级
+    | expression Plus   expression #plusExpression
+    | expression Minus  expression #minusExpression
+    //五级优先级
+    | expression LeftShift  expression  #leftShiftExpression
+    | expression RightShift expression  #rightShiftExpression
+    //六级优先级
+    | expression Less   expression          #lessExpression
+    | expression Greater expression         #greaterExpression
+    | expression LessEqual expression       #lessEqualExpression
+    | expression GreaterEqual expression    #greaterEqualExpression
+    //七级优先级
+    | expression Equal expression           #equalExpression
+    | expression NotEqual expression        #notEqualExpression
+    //八级优先级
     | expression And    expression #andExpression
+    //九级优先级
+    | expression Caret  expression #caretExpression
+    //十级优先级
     | expression Or     expression #orExpression
-    | expression Assign expression #assignExpression
-    | expression Less   expression #lessExpression
-    | expression Greater expression #greaterExpression
-    | expression PlusAssign expression #plusAssignExpression
-    | expression MinusAssign expression #minusAssignExpression
-    | expression DivAssign expression #divAssignEpxression
-    | expression ModAssign expression #modAssignExpression
-    | expression XorAssign expression #xorAssignExpression
+    //十一级优先级
+    | expression AndAnd expression  #andAndExpression
+    //十二级优先级
+    | expression OrOr expression    #orOrExpression
+    //十三级优先级
+    | <assoc = right> expression Assign expression #assignExpression
+    | <assoc = right> expression PlusAssign expression #plusAssignExpression
+    | <assoc = right> expression MinusAssign expression #minusAssignExpression
+    | <assoc = right> expression DivAssign expression   #divAssignEpxression
+    | <assoc = right> expression ModAssign expression   #modAssignExpression
+    | <assoc = right> expression XorAssign expression   #xorAssignExpression
+    | <assoc = right> expression AndAssign expression   #andAssignExpression
+    | <assoc = right> expression OrAssign expression    #orAssignExpression
+    | <assoc = right> expression LeftShiftAssign expression #leftShiftAssignExpression
+    | <assoc = right> expression RightShiftAssign expression #rightShiftAssignExpression
+    //十四级优先级
+    | expression Comma expression   #commaExpression
     ;
 
 

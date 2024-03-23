@@ -4,6 +4,7 @@
 
 #include "toAstVisitor.h"
 
+
 std::any toAstVisitor::visitAssignExpression(RiddleParser::AssignExpressionContext *ctx){
     if(ctx->children.size() == 1){
         auto temp=ctx->children[0]->children;
@@ -41,33 +42,6 @@ std::any toAstVisitor::visitLessExpression(RiddleParser::LessExpressionContext *
 }
 
 std::any toAstVisitor::visitNotEqualExpression(RiddleParser::NotEqualExpressionContext *ctx){
-    if(ctx->children.size() == 1){
-        auto temp=ctx->children[0]->children;
-        ctx->children=temp;
-        visit(ctx);
-    } else visitChildren(ctx);
-    return {};
-}
-
-std::any toAstVisitor::visitLessAssignExpression(RiddleParser::LessAssignExpressionContext *ctx){
-    if(ctx->children.size() == 1){
-        auto temp=ctx->children[0]->children;
-        ctx->children=temp;
-        visit(ctx);
-    } else visitChildren(ctx);
-    return {};
-}
-
-std::any toAstVisitor::visitGreaterAssignExpression(RiddleParser::GreaterAssignExpressionContext *ctx){
-    if(ctx->children.size() == 1){
-        auto temp=ctx->children[0]->children;
-        ctx->children=temp;
-        visit(ctx);
-    } else visitChildren(ctx);
-    return {};
-}
-
-std::any toAstVisitor::visitExpression(RiddleParser::ExpressionContext *ctx){
     if(ctx->children.size() == 1){
         auto temp=ctx->children[0]->children;
         ctx->children=temp;
