@@ -6,7 +6,7 @@
 #include "RiddleParserBaseVisitor.h"
 
 //有明确指明参数名的用参数名，否则用数字
-typedef std::map<std::string, std::any> parameter_t;
+typedef std::map<std::string, Object> parameter_t;
 //第一个参数是名称，第二个参数是类型(如果是 Object 类型则确定为默认值)
 typedef std::vector<std::pair<std::string, std::string>> dParameter_t;
 
@@ -30,9 +30,8 @@ public:
 
     std::string creatNewObject();
 
-    RiddleParser::FuncBodyContext* findFunc(const std::string& className,const std::string& funcName,const parameter_t& parameter);
+    static dParameter_t Calibration(const parameter_t &parameter);
 
-    std::string construct(const std::string &className, const parameter_t &parameter);
 };
 
 extern ObjManager MainManager;

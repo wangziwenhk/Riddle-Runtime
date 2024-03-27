@@ -40,17 +40,14 @@ std::string ObjManager::creatNewObject(){
     return uuid;
 }
 
-RiddleParser::FuncBodyContext* ObjManager::findFunc(const std::string& className, const std::string& funcName, const parameter_t& parameter) {
-    if(!funcs[className].count(funcName)){
-        return nullptr;
+dParameter_t ObjManager::Calibration(const parameter_t &parameter){
+    dParameter_t temp;
+    for(const auto &i:parameter){
+        if(isNumber(i.first)){
+            int number=std::stoi(i.first);
+            if(temp.size()-1 < number){
+
+            }
+        }
     }
-    auto dParameter=funcs[className][funcName];
-    return NULL;
-}
-
-//类名，参数名，有指向的参数名
-std::string ObjManager::construct(const std::string &className, const parameter_t &parameter){
-    std::string uuid=creatNewObject();
-
-    return uuid;
 }

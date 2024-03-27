@@ -6,7 +6,7 @@
 #include <string>
 #include <locale>
 #include <cmath>
-#include "ObjManager.h"
+#include "../ObjManager.h"
 
 using namespace std;
 

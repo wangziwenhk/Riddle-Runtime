@@ -13,15 +13,15 @@ set(scr_dir
         gen/RiddleParserListener.cpp
         gen/RiddleParserBaseVisitor.cpp
         gen/RiddleParserBaseListener.cpp
-        scr/visitor.cpp
+        scr/visitor/visitor.cpp
         scr/ObjManager.cpp
         scr/ObjManager.h
         scr/Object.cpp
         scr/Object.h
         scr/Tools.cpp
         scr/Tools.h
-        scr/toAstVisitor.cpp
-        scr/toAstVisitor.h
+        scr/visitor/toAstVisitor.cpp
+        scr/visitor/toAstVisitor.h
 )
 
 

@@ -9,6 +9,8 @@
 
 std::string GetUUID();
 
+bool isNumber(const std::string &s);
+
 template<typename Tp>
 bool isTerminalNode(const Tp& node){
     if(dynamic_cast<antlr4::tree::TerminalNodeImpl*>(node) != nullptr)

@@ -13,13 +13,13 @@ newline_statment
 
 statment
     : variableDefine
-    | expression
     | block
     | funcDefine
     | while
     | print
     | statment Semi statment?
     | Semi
+    | expression
     ;
 
 //内置的外部输出控制，临时测试用
@@ -38,6 +38,11 @@ primaryExpression
 idExpression
     : Identfier
     | idExpression Dot idExpression
+    ;
+
+idLiteralExpression
+    : Identfier
+    | idExpression Dot idLiteralExpression
     ;
 
 variableDefine
@@ -71,17 +76,17 @@ block
 expression
     : primaryExpression #t_primaryExpression  //这个就是一个占位符，不需要实现
     //一级优先级
-    | idExpression LeftBracket expression RightBracket #callExpression      //函数调用
-    | idExpression PlusPlus     #rightPlusPlusExoression                    //后缀自增
-    | idExpression MinusMinus   #rightMinusMinusExpression                  //后缀自减
+    | idLiteralExpression LeftBracket expression RightBracket #callExpression      //函数调用
+    | idLiteralExpression PlusPlus     #rightPlusPlusExoression                    //后缀自增
+    | idLiteralExpression MinusMinus   #rightMinusMinusExpression                  //后缀自减
     //二级优先级
-    | <assoc = right> PlusPlus idExpression     #leftPlusPlusExoression     //前缀自增
-    | <assoc = right> MinusMinus idExpression   #leftMinusMinusExpression   //前缀自减
-    | <assoc = right> Plus expression           #positiveExpression         //取正操作符
-    | <assoc = right> Minus expression          #negativeExpression         //取负操作符
-    | <assoc = right> Not expression            #notExpression              //逻辑非操作符
-    | <assoc = right> Tilde expression          #tildeExpression            //逐位非操作符
-    | <assoc = right> And idExpression          #quoteExpression            //引用操作符
+    | <assoc = right> PlusPlus idLiteralExpression      #leftPlusPlusExoression     //前缀自增
+    | <assoc = right> MinusMinus idLiteralExpression    #leftMinusMinusExpression   //前缀自减
+    | <assoc = right> Plus      expression              #positiveExpression         //取正操作符
+    | <assoc = right> Minus     expression              #negativeExpression         //取负操作符
+    | <assoc = right> Not       expression              #notExpression              //逻辑非操作符
+    | <assoc = right> Tilde     expression              #tildeExpression            //逐位非操作符
+    | <assoc = right> And       idLiteralExpression     #quoteExpression            //引用操作符
     //三级优先级
     | expression Mod    expression #modExpression
     | expression Star   expression #starExpression

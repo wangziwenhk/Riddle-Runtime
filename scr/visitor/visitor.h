@@ -2,7 +2,7 @@
 #define RIDDLE_VISITOR_H
 
 #include "RiddleParserBaseVisitor.h"
-#include "ObjManager.h"
+#include "../ObjManager.h"
 
 std::wstring to_wstring(const std::string &str);
 

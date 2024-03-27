@@ -4,6 +4,16 @@
 #include <guiddef.h>
 #include <combaseapi.h>
 #include <string>
+#include <algorithm>
+
+bool isNumber(const std::string &s){
+    if(s[0] == '0' && s.size() == 1)return true;
+    else if(s[0] != '0'){
+        return std::all_of(s.begin(), s.end(), [](const char ch){
+            return isdigit(ch);
+        });
+    } else return false;
+}
 
 std::string GetUUID()
 {
